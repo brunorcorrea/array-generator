@@ -14,6 +14,7 @@ build:
 	make main.o
 	rm -r -f bin
 	mkdir bin
+	clear
 	make link
 	make clear
 	clear

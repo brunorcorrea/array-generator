@@ -1,29 +1,11 @@
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 #include <string.h>
 #include "functions.h"
 
 void setup() {
     srand(time(NULL));
-}
-
-void allocMemoryDouble(double **p, int size)
-{
-    *p = (double *)malloc(size * sizeof(double));
-}
-
-void allocMemoryChar(char **p, int size)
-{
-    *p = (char *)malloc(size * sizeof(char));
-}
-
-void allocMemoryString(char ***p, int size)
-{
-    *p = (char **)malloc(size * sizeof(char*));
-    for(int i = 0; i < size; i++)
-    {
-        (*p)[i] = (char *)malloc(100 * sizeof(char));
-    }
 }
 
 int main(int argc, char *argv[]) {
@@ -58,22 +40,18 @@ int main(int argc, char *argv[]) {
                 printFloatArray(p, size);
                 break;
             }
-        case 2:
-            {
-                double *p;
-                allocMemoryDouble(&p, size);
-                break;
-            }
         case 3:
             {
                 char *p;
-                allocMemoryChar(&p, size);
+                generateCharValues(&p, size);
+                printCharArray(p, size);
                 break;
             }
         case 4:
             {
                 char **p;
-                allocMemoryString(&p, size);
+                generateStringValues(&p, size);
+                printStringArray(p, size);
                 break;
             }
     }
