@@ -132,9 +132,9 @@ void printStringArray(char **p, int size)
     printf("%c ", arrayIndicator);
     for (int i = 0; i < size - 1; i++)
     {
-        printf("%s%c ", p[i], arraySeparator);
+        printf("\"%s\"%c ", p[i], arraySeparator);
     }
-    printf("%s %c\n", p[size - 1], arrayIndicator == '[' ? ']' : '}');
+    printf("\"%s\" %c\n", p[size - 1], arrayIndicator == '[' ? ']' : '}');
 }
 
 int getArrayType(char *arrayType)
