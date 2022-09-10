@@ -3,9 +3,8 @@
 #include <string.h>
 #include "functions.h"
 
-void allocMemoryFloat(float **p, int size)
-{
-    *p = (float *)malloc(size * sizeof(float));
+void setup() {
+    srand(time(NULL));
 }
 
 void allocMemoryDouble(double **p, int size)
@@ -28,15 +27,17 @@ void allocMemoryString(char ***p, int size)
 }
 
 int main(int argc, char *argv[]) {
+    setup();
+
     if(argc < 3) {
-        printf("not enough arguments");
+        printf("not enough arguments\n");
         return 1;
     }
 
     int selectedArrayType = getArrayType(argv[1]);
 
     if(selectedArrayType == -1) {
-        printf("array type not supported");
+        printf("array type not supported\n");
         return 1;
     }
 
@@ -53,7 +54,8 @@ int main(int argc, char *argv[]) {
         case 1:
             {
                 float *p;
-                allocMemoryFloat(&p, size);
+                generateFloatValues(&p, size);
+                printFloatArray(p, size);
                 break;
             }
         case 2:

@@ -13,7 +13,7 @@ void allocMemoryInt(int **p, int size)
 
 void generateIntValues(int **p, int size)
 {
-    allocMemoryInt(p, size);    
+    allocMemoryInt(p, size);
     for (int i = 0; i < size; i++)
     {
         (*p)[i] = rand() % 100;
@@ -23,11 +23,37 @@ void generateIntValues(int **p, int size)
 void printIntArray(int *p, int size)
 {
     printf("%c ", arrayIndicator);
-    for (int i = 0; i < size-1; i++)
+    for (int i = 0; i < size - 1; i++)
     {
         printf("%d%c ", p[i], arraySeparator);
     }
-    printf("%d %c\n", p[size-1], arrayIndicator == '[' ? ']' : '}');
+    printf("%d %c\n", p[size - 1], arrayIndicator == '[' ? ']' : '}');
+}
+
+void allocMemoryFloat(float **p, int size)
+{
+    *p = (float *)malloc(size * sizeof(float));
+}
+
+void generateFloatValues(float **p, int size)
+{
+    allocMemoryFloat(p, size);
+    for (int i = 0; i < size; i++)
+    {
+        int randomNum = rand() % 100;
+        float randomFloat = (float)randomNum / 7.3 + randomNum;
+        (*p)[i] = randomFloat;
+    }
+}
+
+void printFloatArray(float *p, int size)
+{
+    printf("%c ", arrayIndicator);
+    for (int i = 0; i < size - 1; i++)
+    {
+        printf("%.2f%c ", p[i], arraySeparator);
+    }
+    printf("%.2f %c\n", p[size - 1], arrayIndicator == '[' ? ']' : '}');
 }
 
 int getArrayType(char *arrayType)

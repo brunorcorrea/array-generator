@@ -8,9 +8,12 @@ clear:
 	rm -r -f build
 .PHONY: build
 build:
+	make clear
 	mkdir build
 	make functions.o
 	make main.o
+	rm -r -f bin
+	mkdir bin
 	make link
 	make clear
 	clear
